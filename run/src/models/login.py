@@ -1,12 +1,16 @@
 #!/usr/local/bin python3
 from .orm import Database
 from flask import render_template, session
+import sqlite3
 
 def login(username,password):
     #check username
     with Database('database.db') as db:
-        db.execute("""SELECT password FROM users WHERE username=?;""",(username,))
-        db_password = db.fetchone()
+        try:
+            db.execute("""SELECT password FROM users WHERE username=?;""",(username,))
+            db_password = db.fetchone()
+        except sqlite3.OperationalError:
+            return render_template('login.html', message="No database found")
         if db_password:
             #username does exist in database
             if db_password[0] == password:
