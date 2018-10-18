@@ -1,6 +1,6 @@
 #!/usr/local/bin python3
 
-from flask import Blueprint, render_template, request, session
+from flask import Blueprint, render_template, request, session, redirect
 from ..models import login
 
 controller = Blueprint('login', __name__)
