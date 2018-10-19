@@ -40,7 +40,7 @@ def ebayfnc(productname):
     return priceval'''
 
 def ebayfnc(productname):
-    driver = webdriver.Chrome('chromedriver.exe')
+    driver = webdriver.Chrome('chromedriver')
     driver.get("http://www.ebay.com")
     elem = driver.find_element_by_id("gh-ac")
     elem.clear()
