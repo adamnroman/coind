@@ -7,7 +7,10 @@ controller = Blueprint('homepage', __name__)
 def home():
     if 'username' in session:
         if request.method == 'POST':
-            return render_template('homepage.html')
+            product = request.form['product']
+            x_data, y_data = homepage.generate_data(product)
+            plot_url = homepage.generate_graph(x_data, y_data, product)
+            return render_template('homepage.html', product = product)
         else:
             return render_template('homepage.html')
     else:
