@@ -13,7 +13,8 @@ with Database('dealbase.db') as db:
                 product VARCHAR,
                 price INTEGER,
                 percentage INTEGER,
-                url VARCHAR);""")
+                url VARCHAR,
+                date TEXT);""")
     db.execute("""CREATE TABLE IF NOT EXISTS data(
                pk INTEGER PRIMARY KEY AUTOINCREMENT,
                username VARCHAR,

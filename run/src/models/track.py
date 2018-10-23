@@ -12,13 +12,13 @@ from bs4 import BeautifulSoup
 
 def insert_product(user, product):
     with Database('dealbase.db') as db:
-        db.execute("SELECT * FROM productstorage WHERE username = '{}' AND product = '{}';".format(user, product))
+        db.execute("SELECT * FROM original WHERE username = '{}' AND product = '{}';".format(user, product))
         results = db.fetchall()
         print(results)
         if len(results) != 0:
             return 'FAILED'
         originalprice, url = ebayfnc(product)
-        db.execute("""INSERT INTO productstorage(username, product, originalprice, url) VALUES('{}', '{}', {}, '{}');""".format(user, product, originalprice, url))
+        db.execute("""INSERT INTO original(username, product, price, percentage, url, date) VALUES('{}', '{}', {}, {}, '{}', date('now'));""".format(user, product, originalprice, url))
     return 'SUCCESS'
 
 
