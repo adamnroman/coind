@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Product Page</title>
+    <title>URL Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,13 +22,15 @@
     <div class="container">
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h2>Product Track form</h2>
-        <p class="lead">Enter the product you would like to track below</p>
+        <h2>URL Track form</h2>
+        <p class="lead">Enter the url you would like to track below</p>
       </div>
 
-    <form action = "/add-product" method = "post">
+    <form action = "/add-url" method = "post">
         <label for="product" class="sr-only">Product</label>
         <input name="product" type="text" id="product" class="form-control" placeholder="Product" required"" autofocus"">
+        <label for="url" class="sr-only">URL</label>
+        <input name="url" type="text" id="url" class="form-control" placeholder="URL" required"" autofocus"">
         <label for="percentage" class="sr-only">Percentage</label>
         <input name="percentage" type="text" id="percentage" class="form-control" placeholder="Percentage" required"" autofocus"">
         <p><input type = submit value=Enter name/></p>

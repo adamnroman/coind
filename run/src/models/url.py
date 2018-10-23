@@ -10,32 +10,22 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def insert_product(user, product, percentage):
+def insert_url(user, product, url, percentage):
     with Database('dealbase.db') as db:
         db.execute("SELECT * FROM original WHERE username = '{}' AND product = '{}';".format(user, product))
         results = db.fetchall()
         print(results)
         if len(results) != 0:
             return 'FAILED'
-        price, url = ebayfnc(product)
+        price = ebay_getprice(product)
         db.execute("""INSERT INTO original(username, product, price, url, percentage) VALUES('{}', '{}', {}, '{}', {});""".format(user, product, price, url, percentage))
     return 'SUCCESS'
 
 
-def ebayfnc(productname):
-    driver = webdriver.Chrome('chromedriver.exe')
-    driver.get("http://www.ebay.com")
-    elem = driver.find_element_by_id("gh-ac")
-    elem.clear()
-    elem.send_keys(productname)
-    elem.send_keys(Keys.RETURN)
-    assert "No results found." not in driver.page_source
-    page = requests.get(driver.current_url)
+def ebay_getprice(url):
+    page = requests.get("https://www.ebay.com/sch/i.html?_from=R40&_nkw=fluent+python&_sacat=0&LH_ItemCondition=3&rt=nc&LH_BIN=1")
     soup = BeautifulSoup(page.text, 'html.parser')
     price = soup.find(class_="s-item__price")
     pricestr = price.text
     priceval = float(pricestr[1:])
-    link = driver.find_element_by_class_name('s-item__link')
-    link = link.get_attribute("href")
-    driver.close()
-    return priceval, link
+    return priceval
