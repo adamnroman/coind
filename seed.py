@@ -25,7 +25,7 @@ with Database('dealbase.db') as db:
                'toy',
                'www.toy.com',
                23,
-               date('now'));"""   
+               '2018-10-26');"""   
                )
     db.execute("""INSERT INTO data(
                username,
@@ -37,5 +37,33 @@ with Database('dealbase.db') as db:
                'toy',
                'www.toy.com',
                10,
-               date('now'));"""   
+               '2018-10-25');"""   
                )
+    db.execute("""INSERT INTO original(
+                username,
+                product,
+                price,
+                percentage,
+                url,
+                date) VALUES(
+                'adam',
+                'toy',
+                25,
+                10,
+                'www.toy.com',
+                '2018-10-22');"""
+    )
+    db.execute("""INSERT INTO original(
+                username,
+                product,
+                price,
+                percentage,
+                url,
+                date) VALUES(
+                'adam',
+                'toy2',
+                300,
+                25,
+                'www.toy.com',
+                '2018-10-15');"""
+    )

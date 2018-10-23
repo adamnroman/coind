@@ -17,8 +17,8 @@ def insert_product(user, product, percentage):
         print(results)
         if len(results) != 0:
             return 'FAILED'
-        price, url = ebayfnc(product)
-        db.execute("""INSERT INTO original(username, product, price, url, percentage) VALUES('{}', '{}', {}, '{}', {});""".format(user, product, price, url, percentage))
+        originalprice, url = ebayfnc(product)
+        db.execute("""INSERT INTO original(username, product, price, percentage, url, date) VALUES('{}', '{}', {}, {}, '{}', date('now'));""".format(user, product, originalprice, percentage, url))
     return 'SUCCESS'
 
 
