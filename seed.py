@@ -11,9 +11,9 @@ with Database('dealbase.db') as db:
                date) VALUES(
                'adam',
                'toy',
-               'www.toy.com',
+               'http://www.toy.com',
                5,
-               date('now'));"""   
+               datetime('now'));"""   
                )
     db.execute("""INSERT INTO data(
                username,
@@ -23,7 +23,7 @@ with Database('dealbase.db') as db:
                date) VALUES(
                'adam',
                'toy',
-               'www.toy.com',
+               'http://www.toy.com',
                23,
                '2018-10-26');"""   
                )
@@ -35,7 +35,7 @@ with Database('dealbase.db') as db:
                date) VALUES(
                'adam',
                'toy',
-               'www.toy.com',
+               'http://www.toy.com',
                10,
                '2018-10-25');"""   
                )
@@ -50,7 +50,7 @@ with Database('dealbase.db') as db:
                 'toy',
                 25,
                 10,
-                'www.toy.com',
+                'http://www.toy.com',
                 '2018-10-22');"""
     )
     db.execute("""INSERT INTO original(
@@ -64,6 +64,6 @@ with Database('dealbase.db') as db:
                 'toy2',
                 300,
                 25,
-                'www.toy.com',
+                'http://www.toy.com',
                 '2018-10-15');"""
     )

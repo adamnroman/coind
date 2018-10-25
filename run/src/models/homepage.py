@@ -18,14 +18,14 @@ def generate_graph_data(product):
         db.execute("""SELECT date FROM data WHERE product=?;""",(product,))
         x_data = db.fetchall()
         # Each piece of x_data is a tuple with the second indexed item not existing. This is fixing that.
-        x_data = sorted([each[0] for each in x_data])
+        x_data = [each[0] for each in x_data]
         db.execute("""SELECT price FROM data WHERE product=?;""",(product,))
         y_data = db.fetchall()
-        y_data = sorted([each_[0] for each_ in y_data])
+        y_data = [each_[0] for each_ in y_data]
         return x_data, y_data
 
 def generate_graph(x_data, y_data, product):
-    #TODO Uses the compiled data to render a plotly graph
+    #TODO Uses the compiled data to render a matplotlib graph
     plt.xlabel('Date')
     plt.ylabel('Price')
     graph = plt.plot(x_data,y_data,label=product)
