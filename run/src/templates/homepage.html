@@ -33,7 +33,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="/homepage">
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
@@ -132,14 +132,13 @@
               <p>Choose a product to view trends<input type = "text" name = "product" /></p>
               <p><input type = "submit" value = "Submit" /></p>
             </form>
-            <p> {{response}} </p>
              {% if product %}
             <div>
               <img src="static/graphs/{{product}}.png" width="1000" height="500" />
             </div>
             {% endif %}
             {% endblock graph %}
-
+<p>{{response}}</p>
           <h2>Currently Tracking...</h2>
           <div class="table-responsive">
             <table class="table table-striped table-sm">

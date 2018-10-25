@@ -13,12 +13,12 @@ def home():
             product = request.form['product']
             x_data, y_data = homepage.generate_graph_data(product)
             info = homepage.get_table_info(username)
-            if x_data and y_data:
+            if len(y_data) > 1:
                 #generates the graph and returns the time key for file naming
                 time_string = homepage.generate_graph(x_data, y_data, product)
                 return render_template('homepage.html', product = product+time_string, info=info)
             else:
-                return render_template('homepage.html', info=info)
+                return render_template('homepage.html', info=info, response= "Not enough data to represent accurate trends. Please try again later.")
         else:
             return render_template('homepage.html',info=info)
     else:

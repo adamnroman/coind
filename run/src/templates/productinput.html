@@ -1,30 +1,11 @@
 
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Product Page</title>
+{% extends "homepage.html" %}
+{% block graph %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
-  </head>
-
-  <body class="bg-light">
-
-    <div class="container">
-      <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h2>Product Track form</h2>
         <p class="lead">Enter the product you would like to track below</p>
-      </div>
 
     <form action = "/add-product" method = "post">
         <label for="product" class="sr-only">Product</label>
@@ -33,9 +14,4 @@
         <input name="percentage" type="text" id="percentage" class="form-control" placeholder="Percentage" required"" autofocus"">
         <p><input type = submit value=Enter name/></p>
     </form>
-
-    {% block main %}
-    {% endblock main %}
-
-    <hr class="mb-4">
-    <button class="btn btn-primary btn-lg btn-block" type="submit"><a href = '/logout'> Sign Out </a> </button>
+  {% endblock graph %}

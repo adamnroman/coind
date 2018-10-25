@@ -1,6 +1,6 @@
-from flask import Flask, Blueprint, render_template, request, session, abort
+from flask import Flask, Blueprint, render_template, request, session, abort, redirect
 import time
-from ..models import track
+from ..models import track, homepage
 
 controller = Blueprint('track', __name__)
 
@@ -16,7 +16,7 @@ def trackfnc():
             print(track.insert_product(username, productname, percentage))
             time2 = time.time()
             print(str(time2-time1) + 'seconds taken')
-            return render_template('productinput.html')
-        return render_template('productinput.html')
+            return redirect('/homepage')
+        return render_template('productinput.html', info=homepage.get_table_info(username))
     else:
         abort(403)
