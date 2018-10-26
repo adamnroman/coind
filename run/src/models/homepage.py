@@ -6,10 +6,6 @@ import sqlite3
 import time
 
 
-def update_database():
-    #TODO update the database for the price of the products that the user wants to track
-    pass
-
 
 def generate_graph_data(product):
     #TODO Pulls data from our database and creates a graphable data set out of it
@@ -18,7 +14,7 @@ def generate_graph_data(product):
         db.execute("""SELECT date FROM data WHERE product=?;""",(product,))
         x_data = db.fetchall()
         # Each piece of x_data is a tuple with the second indexed item not existing. This is fixing that.
-        x_data = [each[0] for each in x_data]
+        x_data = sorted([each[0] for each in x_data])
         db.execute("""SELECT price FROM data WHERE product=?;""",(product,))
         y_data = db.fetchall()
         y_data = [each_[0] for each_ in y_data]
