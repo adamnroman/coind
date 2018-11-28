@@ -1,32 +1,13 @@
 
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>URL Page</title>
+{% extends "homepage2.html" %}
+{% block graph %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
-  </head>
-
-  <body class="bg-light">
-
-    <div class="container">
-      <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h2>URL Track form</h2>
         <p class="lead">Enter the url you would like to track below</p>
-      </div>
 
-    <form action = "/add-url" method = "post">
+    <form action = "/add_url" method = "post">
         <label for="product" class="sr-only">Product</label>
         <input name="product" type="text" id="product" class="form-control" placeholder="Product" required"" autofocus"">
         <label for="url" class="sr-only">URL</label>
@@ -36,8 +17,4 @@
         <p><input type = submit value=Enter name/></p>
     </form>
 
-    {% block main %}
-    {% endblock main %}
-
-    <hr class="mb-4">
-    <button class="btn btn-primary btn-lg btn-block" type="submit"><a href = '/'> Return to Home </a> </button>
+{% endblock graph %}

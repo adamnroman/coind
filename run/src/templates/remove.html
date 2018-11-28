@@ -1,0 +1,12 @@
+{% extends "homepage2.html" %}
+{% block graph %}
+
+        <h2>Stop tracking</h2>
+        <p class="lead">Enter the product you would like to remove... You cannot reverse this action.</p>
+
+    <form action = "/remove" method = "post">
+        <label for="product" class="sr-only">Product</label>
+        <input name="product" type="text" id="product" class="form-control" placeholder="Product" required"" autofocus"">
+        <p><input type = submit value=Enter name/></p>
+    </form>
+  {% endblock graph %}

@@ -6,7 +6,8 @@ with Database('dealbase.db') as db:
     db.execute("""CREATE TABLE IF NOT EXISTS users(
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 username VARCHAR,
-                password VARCHAR);""")
+                password VARCHAR,
+                email VARCHAR);""")
     db.execute("""CREATE TABLE IF NOT EXISTS original(
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
                 username VARCHAR,
@@ -14,6 +15,8 @@ with Database('dealbase.db') as db:
                 price INTEGER,
                 percentage INTEGER,
                 url VARCHAR,
+                image VARCHAR,
+                status VARCHAR,
                 date TEXT);""")
     db.execute("""CREATE TABLE IF NOT EXISTS data(
                pk INTEGER PRIMARY KEY AUTOINCREMENT,

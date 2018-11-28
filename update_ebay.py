@@ -5,32 +5,35 @@
 from run.src.models.orm import Database
 from run.src.models.url import ebay_getprice
 import smtplib
+import time
 
 with Database('dealbase.db') as db:
     db.execute("""SELECT * FROM original;""")
-    original_data = db.fetchall()  
+    original_data = db.fetchall()
+    print(original_data)  
     for each in original_data:
-        db.execute("""SELECT email FROM users WHERE username=?;""",(each[1]))
+        time.sleep(1)
+        print(each[1], len(each[1]))
+        db.execute("""SELECT email FROM users WHERE username='{}';""".format(each[1]))
         email = db.fetchone()
         url = each[5]
-        price = ebay_getprice(url)
+        price, image, status = ebay_getprice(url)
         db.execute("""INSERT INTO data(
                     username,
                     product,
                     url,
                     price,
                     date) VALUES(
-                    ?,
-                    ?,
-                    ?,
-                    ?,
-                    datetime('now'));""",(each[1], each[2], url, price))
+                    '{}',
+                    '{}',
+                    '{}',
+                    '{}',
+                    datetime('now'));""".format(each[1], each[2], url, price))
         ## Now calculate if percentage change was met.
         if price <= (each[4]/100)*each[3]:
-            #TODO send notification and mark it on the template
             gmail_user = 'coindproject@gmail.com'
             gmail_password = 'byteacademy'
-            server = smtplib.SMTP_SSL('smtp.gmail.com, 465')
+            server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
             server.ehlo()
             server.login(gmail_user,gmail_password)
             sent_from = 'coindproject@gmail.com'
@@ -46,15 +49,11 @@ with Database('dealbase.db') as db:
             """.format(sent_from, to, subject, body)
             server.sendmail(sent_from, to, email_text)
             server.close()
-            return "success"
-        elif price < each[3]:
-            #TODO don't send notification but mark it on website that price has dropped
-            return "semi_success"
+            print('success')
         else:
             #TODO Make it do nothing i guess
-            return "failure"
-            
-print('done')   
+            print("failure")
+             
 
 
 

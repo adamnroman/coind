@@ -1,0 +1,16 @@
+<!doctype html>
+
+{% extends "homepage2.html" %}
+{% block graph %}
+
+        <h2>Product Track form</h2>
+        <p class="lead">Enter the product you would like to track below</p>
+
+    <form action = "/track_product" method = "post">
+        <label for="product" class="sr-only">Product</label>
+        <input name="product" type="text" id="product" class="form-control" placeholder="Product" required"" autofocus"">
+        <label for="percentage" class="sr-only">Percentage</label>
+        <input name="percentage" type="text" id="percentage" class="form-control" placeholder="Percentage" required"" autofocus"">
+        <p><input type = submit value=Enter name/></p>
+    </form>
+  {% endblock graph %}

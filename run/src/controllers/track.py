@@ -5,7 +5,7 @@ from ..models import track, homepage
 controller = Blueprint('track', __name__)
 
 
-@controller.route('/add-product', methods=['GET', 'POST'])
+@controller.route('/track_product', methods=['GET', 'POST'])
 def trackfnc():
     if 'username' in session:
         time1 = time.time()
@@ -17,6 +17,6 @@ def trackfnc():
             time2 = time.time()
             print(str(time2-time1) + 'seconds taken')
             return redirect('/homepage')
-        return render_template('productinput.html', info=homepage.get_table_info(username))
+        return render_template('track.html', info=homepage.get_table_info(username))
     else:
         abort(403)
